@@ -78,11 +78,11 @@
                     <select id="ddl2" class="ui search dropdown">
                     </select>
                 </div>
-                <div class="field"><label for="file" class="ui blue basic icon button">
+                <div class="field"><label for="file" class="ui inverted violet icon button">
                     <i class="file icon"></i>
                     Select File</label>
                     <input type="file" id="file" style="display:none"></div>
-                <div class="field"><input type="submit" class="ui blue basic fluid button"></div>
+                <div class="field"><input type="submit" class="ui inverted violet fluid button"></div>
             </form>
         </div>
     </div>
