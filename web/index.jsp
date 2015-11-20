@@ -22,8 +22,8 @@
     <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#1f1f2f">
     <link rel="shortcut icon" href="icons/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-TileImage" content="../web.icons/mstile-144x144.png">
-    <meta name="msapplication-config" content="../web.icons/browserconfig.xml">
+    <meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="icons/browserconfig.xml">
     <meta name="theme-color" content="#1f1f2f">
     <title>FragMag 2016</title>
     <link rel="stylesheet" type="text/css" href="semantic-ui/semantic.css">
