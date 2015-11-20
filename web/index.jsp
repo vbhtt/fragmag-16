@@ -19,7 +19,39 @@
             $('select.dropdown')
                     .dropdown()
             ;
-        })
+        });
+        function configureDropDownLists(ddl1,ddl2) {
+            var fe = ['A', 'B', 'C', 'D'];
+            var shapes = ['Computers', 'Electronics', 'Production', 'IT'];
+
+            switch (ddl1.value) {
+                case 'FE':
+                    ddl2.options.length = 0;
+                    for (i = 0; i < fe.length; i++) {
+                        createOption(ddl2, fe[i], fe[i]);
+                    }
+                    break;
+                case 'SE':
+                case 'TE':
+                case 'BE':
+                    ddl2.options.length = 0;
+                    for (i = 0; i < shapes.length; i++) {
+                        createOption(ddl2, shapes[i], shapes[i]);
+                    }
+                    break;
+                default:
+                    ddl2.options.length = 0;
+                    break;
+            }
+
+        }
+
+        function createOption(ddl, text, value) {
+            var opt = document.createElement('option');
+            opt.value = value;
+            opt.text = text;
+            ddl.options.add(opt);
+        }
     </script>
 </head>
 <body>
@@ -33,22 +65,17 @@
                 </h2>
                 <div class="field"><input type="text" placeholder="Name"></div>
                 <div class="field">
-                    <select class="ui search dropdown">
+                    <select id="ddl" class="ui search dropdown" onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
                         <option value="">Select Year</option>
-                        <option value="1">FE</option>
-                        <option value="2">SE</option>
-                        <option value="3">TE</option>
-                        <option value="4">BE</option>
+                        <option value="FE">FE</option>
+                        <option value="SE">SE</option>
+                        <option value="TE">TE</option>
+                        <option value="BE">BE</option>
                     </select>
                 </div>
                 <div class="field">
                     <!--If selected branch is FE then the options here should be A,B,C and D-->
-                    <select class="ui search dropdown">
-                        <option value="">Select Branch</option>
-                        <option value="1">Computers</option>
-                        <option value="2">Electronics</option>
-                        <option value="3">Production</option>
-                        <option value="4">IT</option>
+                    <select id="ddl2" class="ui search dropdown">
                     </select>
                 </div>
                 <div class="field"><label for="file" class="ui blue basic icon button">
