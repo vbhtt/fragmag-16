@@ -24,9 +24,10 @@
 </head>
 <body>
 <div class="ui center aligned grid">
-    <div class="ui center aligned four wide column">
-        <div class="ui segment">
+    <div class="ui stackable segment">
+    <div class="four wide column">
             <form class="ui form">
+
                 <h2 class="ui top attatched header">FragMag 2016
                     <div class="sub header">Upload your articles here</div>
                 </h2>
