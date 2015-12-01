@@ -35,58 +35,20 @@
             background: url("images/google-earth-view-6069.jpg");
         }
     </style>
-    <script>
-        $(function () {
-            $('select.dropdown')
-                    .dropdown()
-            ;
-        });
-        function configureDropDownLists(ddl1,ddl2) {
-            var fe = ['A', 'B', 'C', 'D'];
-            var shapes = ['Computers', 'Electronics', 'Production', 'IT'];
-
-            switch (ddl1.value) {
-                case 'FE':
-                    ddl2.options.length = 0;
-                    for (i = 0; i < fe.length; i++) {
-                        createOption(ddl2, fe[i], fe[i]);
-                    }
-                    break;
-                case 'SE':
-                case 'TE':
-                case 'BE':
-                    ddl2.options.length = 0;
-                    for (i = 0; i < shapes.length; i++) {
-                        createOption(ddl2, shapes[i], shapes[i]);
-                    }
-                    break;
-                default:
-                    ddl2.options.length = 0;
-                    break;
-            }
-
-        }
-
-        function createOption(ddl, text, value) {
-            var opt = document.createElement('option');
-            opt.value = value;
-            opt.text = text;
-            ddl.options.add(opt);
-        }
-    </script>
+    <script src="index.js"></script>
 </head>
 <body>
 <div class="ui center aligned grid">
     <div class="ui stacked raised segment">
         <div class="four wide column">
-            <form class="ui large form">
+            <form class="ui large form" method="post" action="upload" enctype="multipart/form-data">
 
                 <h2 class="ui top attatched header">FragMag 2016
                     <div class="sub header">Upload your articles here</div>
                 </h2>
-                <div class="field"><input type="text" placeholder="Name"></div>
+                <div class="field"><input type="text" name="name" placeholder="Name"></div>
                 <div class="field">
-                    <select id="ddl" class="ui search dropdown" onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
+                    <select id="ddl" class="ui search dropdown"  name="dd1" onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
                         <option value="">Select Year</option>
                         <option value="FE">FE</option>
                         <option value="SE">SE</option>
@@ -96,13 +58,13 @@
                 </div>
                 <div class="field">
                     <!--If selected branch is FE then the options here should be A,B,C and D-->
-                    <select id="ddl2" class="ui search dropdown">
+                    <select id="ddl2"  name="dd2" class="ui search dropdown">
                     </select>
                 </div>
                 <div class="field"><label for="file" class="ui inverted violet icon button">
                     <i class="file icon"></i>
                     Select File</label>
-                    <input type="file" id="file" style="display:none"></div>
+                    <input type="file" id="file" name="file"></div>
                 <div class="field"><input type="submit" class="ui inverted violet fluid button"></div>
             </form>
         </div>
