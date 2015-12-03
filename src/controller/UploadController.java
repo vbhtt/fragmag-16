@@ -1,10 +1,5 @@
 package controller;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -41,9 +36,11 @@ public class UploadController extends HttpServlet {
         System.out.println(savePath);
         System.out.println(request.getParts());
         for (Part part : request.getParts()) {
-            String fileName = extractFileName(part);
-            System.out.println(savePath + File.separator + fileName);
-            part.write(savePath + File.separator + fileName);
+            if(part.getName().equals("file")) {
+                String fileName = request.getParameter("dd1")+"."+request.getParameter("dd2")+"."+request.getParameter("name")+"."+extractFileName(part);
+                System.out.println(savePath + File.separator + fileName);
+                part.write(savePath + File.separator + fileName);
+            }
         }
 
     }
