@@ -58,7 +58,7 @@
     <source src="videos/hd0298-H264%2075.mp4" type="video/mp4">
 </video>
 <div class="ui stacked raised segment">
-    <form class="ui large form" method="post" action="upload" enctype="multipart/form-data">
+    <form id="uploadForm" class="ui large form">
 
         <h2 class="ui top attatched header">FragMag 2016
             <div class="sub header">Upload your articles here</div>
@@ -86,6 +86,9 @@
             <input type="file" id="file" name="file"></div>
         <div class="field"><input type="submit" class="ui inverted violet fluid button"></div>
     </form>
+    <div id="progress" class="ui top attached indicating progress" data-percent="0">
+        <div class="bar"></div>
+    </div>
 </div>
 </body>
 </html>
