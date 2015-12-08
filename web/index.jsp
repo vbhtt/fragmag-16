@@ -27,6 +27,7 @@
     <meta name="theme-color" content="#1f1f2f">
     <title>FragMag 2016</title>
     <link rel="stylesheet" type="text/css" href="semantic-ui/semantic.css">
+    <link rel="stylesheet" type="text/css" href="animate.css">
 
     <script src="jquery.min.js"></script>
     <script src="semantic-ui/semantic.min.js"></script>
@@ -35,7 +36,7 @@
             overflow: hidden;
         }
 
-        video {
+        video, .video {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -44,27 +45,34 @@
             min-width: 100%;
         }
 
-        .ui.segment {
+        .video {
+            background: rgba(0,0,0,0.6) ;
+        }
+
+        .formbox {
             position: absolute;
+            width: 30%;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            left: 100%;
+            transform: translate(-100%, -50%);
         }
     </style>
     <script src="index.js"></script>
 </head>
 <body>
-<video poster="images\google-earth-view-6069.jpg" autoplay loop>
-    <source src="videos/hd0298-H264%2075.mp4" type="video/mp4">
-</video>
-<div class="ui stacked raised segment">
-    <form id="uploadForm" class="ui large form">
 
-        <h2 class="ui top attatched header">FragMag 2016
+<video poster="images\google-earth-view-6069.jpg" autoplay loop>
+    <source src="videos/videvostock004.mp4" type="video/mp4">
+</video>
+<div class="video">
+</div>
+<div class="formbox">
+    <form id="uploadForm" class="ui form">
+        <h2 class="ui top attatched inverted header">FragMag 2016
             <div class="sub header">Upload your articles here</div>
         </h2>
-        <div class="field"><input type="text" name="name" placeholder="Name"></div>
-        <div class="field">
+        <div class="ui transparent input field"><input type="text" name="name" placeholder="Name"></div>
+        <div class="ui transparent input field">
             <select id="ddl" class="ui search dropdown" name="dd1"
                     onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
                 <option value="">Select Year</option>
@@ -74,19 +82,17 @@
                 <option value="BE">BE</option>
             </select>
         </div>
-        <div class="field">
+        <div class="ui transparent input field">
             <!--If selected branch is FE then the options here should be A,B,C and D-->
             <select id="ddl2" name="dd2" class="ui search dropdown">
                 <option value="">Select Division</option>
             </select>
         </div>
-        <div class="field"><label for="file" class="ui inverted violet icon button">
-            <i class="file icon"></i>
-            Select File</label>
-            <input type="file" id="file" name="file"></div>
-        <div class="field"><input type="submit" class="ui inverted violet fluid button"></div>
+        <div class="ui transparent input field"><label for="file" class="progress button"><i class="file icon"></i>Select File</label>
+            <input type="file" id="file" name="file" style="display: none"></div>
+        <div class="field"><input type="submit" class="ui transparent fluid button"></div>
     </form>
-    <div id="progress" class="ui top attached indicating progress" data-percent="0">
+    <div id="progress" class="ui bottom attached indicating progress" data-percent="0">
         <div class="bar"></div>
     </div>
 </div>
