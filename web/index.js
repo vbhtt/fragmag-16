@@ -33,7 +33,9 @@ $(function () {
         });
     });
     $('#file').on('change',function(e){
-        console.log(e);
+        console.log(e.target.value);
+        $(".progress.button").html('Submit: '+e.target.value.substr(e.target.value.lastIndexOf('/')+1));
+        $(".progress.button").attr("for","submit");
     });
 });
 function configureDropDownLists(ddl1,ddl2) {

@@ -61,7 +61,7 @@
 </head>
 <body>
 
-<video poster="images\google-earth-view-6069.jpg" autoplay loop>
+<video poster="videos\001.jpg" autoplay loop>
     <source src="videos/videvostock004.mp4" type="video/mp4">
 </video>
 <div class="video">
@@ -88,9 +88,9 @@
                 <option value="">Select Division</option>
             </select>
         </div>
-        <div class="ui transparent input field"><label for="file" class="progress button"><i class="file icon"></i>Select File</label>
+        <div class="ui inverted blue button"><label for="file" class="progress button"><i class="file icon"></i>Select File</label>
             <input type="file" id="file" name="file" style="display: none"></div>
-        <div class="field"><input type="submit" class="ui transparent fluid button"></div>
+        <div class="field"><input id="submit" type="submit" style="display: none"></div>
     </form>
     <div id="progress" class="ui bottom attached indicating progress" data-percent="0">
         <div class="bar"></div>
