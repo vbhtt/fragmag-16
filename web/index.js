@@ -32,6 +32,9 @@ $(function () {
             }
         });
     });
+    $('#file').on('change',function(e){
+        console.log(e);
+    });
 });
 function configureDropDownLists(ddl1,ddl2) {
     var fe = ['A', 'B', 'C', 'D'];
