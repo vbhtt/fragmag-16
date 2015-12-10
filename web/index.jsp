@@ -36,6 +36,16 @@
             overflow: hidden;
         }
 
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            font-size: 60vh;
+            color: darkslategrey;
+        }
+
         video, .video {
             position: absolute;
             top: 50%;
@@ -46,7 +56,7 @@
         }
 
         .video {
-            background: rgba(0,0,0,0.6) ;
+            background: linear-gradient(to right, rgba(34,34,34,0) 50%, rgba(34,34,34,1) 100%) ;
         }
 
         .formbox {
@@ -65,14 +75,15 @@
     <source src="videos/videvostock004.mp4" type="video/mp4">
 </video>
 <div class="video">
+    <h1 style="display: none">Done!</h1>
 </div>
 <div class="formbox">
     <form id="uploadForm" class="ui form">
         <h2 class="ui top attatched inverted header">FragMag 2016
             <div class="sub header">Upload your articles here</div>
         </h2>
-        <div class="ui transparent input field"><input type="text" name="name" placeholder="Name"></div>
-        <div class="ui transparent input field">
+        <div class="ui input field"><input type="text" name="name" placeholder="Name"></div>
+        <div class="field">
             <select id="ddl" class="ui search dropdown" name="dd1"
                     onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
                 <option value="">Select Year</option>
@@ -82,7 +93,7 @@
                 <option value="BE">BE</option>
             </select>
         </div>
-        <div class="ui transparent input field">
+        <div class="field">
             <!--If selected branch is FE then the options here should be A,B,C and D-->
             <select id="ddl2" name="dd2" class="ui search dropdown">
                 <option value="">Select Division</option>
@@ -92,9 +103,6 @@
             <input type="file" id="file" name="file" style="display: none"></div>
         <div class="field"><input id="submit" type="submit" style="display: none"></div>
     </form>
-    <div id="progress" class="ui bottom attached indicating progress" data-percent="0">
-        <div class="bar"></div>
-    </div>
 </div>
 </body>
 </html>

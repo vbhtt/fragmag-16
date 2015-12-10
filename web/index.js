@@ -13,10 +13,10 @@ $(function () {
             xhr: function()
             {
                 var xhr = new window.XMLHttpRequest();
+                $(".video").css({"z-index": "10"});
                 xhr.upload.addEventListener("progress", function(evt){
                         var percentComplete = evt.loaded / evt.total *100;
-                        $('#progress').progress({percent: percentComplete});
-                        console.log(percentComplete);
+                        $(".video").css({"background":"linear-gradient(to right, rgba(34,34,34,0.7), rgba(34,34,34,0.7) "+percentComplete+"%,rgba(255,255,255,255))"});
                 }, false);
                 return xhr;
             },
@@ -28,6 +28,8 @@ $(function () {
             enctype: 'multipart/form-data',
             processData: false,
             success: function(data){
+                $(".formbox").hide();
+                $(".video h1").show();
                 console.log("Success "+data);
             }
         });
