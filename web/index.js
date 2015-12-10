@@ -42,9 +42,16 @@ function configureDropDownLists(ddl1,ddl2) {
     var fe = ['A', 'B', 'C', 'D'];
     var shapes = ['Computers', 'Electronics', 'Production', 'IT'];
 
+    ddl2.options.length = 0;
+    var opt = document.createElement('option');
+    opt.value = "";
+    opt.text = "Select Division";
+    opt.selected=true;
+    opt.disabled=true;
+    ddl2.options.add(opt);
+    console.log(opt)
     switch (ddl1.value) {
         case 'FE':
-            ddl2.options.length = 0;
             for (i = 0; i < fe.length; i++) {
                 createOption(ddl2, fe[i], fe[i]);
             }
@@ -52,7 +59,6 @@ function configureDropDownLists(ddl1,ddl2) {
         case 'SE':
         case 'TE':
         case 'BE':
-            ddl2.options.length = 0;
             for (i = 0; i < shapes.length; i++) {
                 createOption(ddl2, shapes[i], shapes[i]);
             }
