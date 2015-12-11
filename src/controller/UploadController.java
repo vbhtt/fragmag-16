@@ -60,10 +60,10 @@ public class UploadController extends HttpServlet {
         String to = "bhattvarun29@gmail.com";
 
         // Sender's email ID needs to be mentioned
-        String from = "emandi74@gmail.com";
+        String from = "editorialboardcrce2016@gmail.com";
 
-        final String username = "emandi74";//change accordingly
-        final String password = "freshVeggies";//change accordingly
+        final String username = "editorialboardcrce2016@gmail.com";//change accordingly
+        final String password = "fragmagcrce2016";//change accordingly
 
         // Assuming you are sending email through relay.jangosmtp.net
         String host = "smtp.gmail.com";
