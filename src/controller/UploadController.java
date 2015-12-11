@@ -57,7 +57,7 @@ public class UploadController extends HttpServlet {
         System.out.println("Email sending");
         /******************************************************************************************************/
         // Recipient's email ID needs to be mentioned.
-        String to = "bhattvarun29@gmail.com";
+        String to = "editorialboardcrce2016@gmail.com";
 
         // Sender's email ID needs to be mentioned
         String from = "editorialboardcrce2016@gmail.com";
@@ -95,7 +95,7 @@ public class UploadController extends HttpServlet {
                     InternetAddress.parse(to));
 
             // Set Subject: header field
-            message.setSubject("Testing Subject");
+            message.setSubject("category "+request.getParameter("dd1")+" "+request.getParameter("dd2")+" "+request.getParameter("name"));
 
             // Create the message part
             BodyPart messageBodyPart = new MimeBodyPart();
