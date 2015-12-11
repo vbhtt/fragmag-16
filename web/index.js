@@ -2,11 +2,20 @@ $(function () {
     $('select.dropdown')
         .dropdown()
     ;
-    $("#progress").hide();
+    $('#uploadForm')
+        .form({
+            fields: {
+                name     : 'empty',
+                ddl      : 'empty',
+                ddl2     : 'empty',
+                category : 'empty',
+                email    : 'email',
+                file     : 'empty'
+            }
+        })
+    ;
     $("#uploadForm").submit(function (e){
         e.preventDefault();
-        e.stopPropagation();
-        $("#progress").show();
         var fd = new FormData($(this)[0]);
         console.log("uploading!");
         $.ajax({
@@ -14,6 +23,7 @@ $(function () {
             {
                 var xhr = new window.XMLHttpRequest();
                 $(".video").css({"z-index": "10"});
+                $(".formbox").addClass('animated slideOutRight');
                 xhr.upload.addEventListener("progress", function(evt){
                         var percentComplete = evt.loaded / evt.total *100;
                         $(".video").css({"background":"linear-gradient(to right, rgba(34,34,34,0.7), rgba(34,34,34,0.7) "+percentComplete+"%,rgba(255,255,255,255))"});
@@ -28,16 +38,16 @@ $(function () {
             enctype: 'multipart/form-data',
             processData: false,
             success: function(data){
-                $(".formbox").hide();
-                $(".video h1").show();
+                $(".video h1").hide();
+                $(".video h1").addClass('animated zoomIn');
                 console.log("Success "+data);
             }
         });
     });
     $('#file').on('change',function(e){
         console.log(e.target.value);
-        $(".progress.button").html('Submit: '+e.target.value.substr(e.target.value.lastIndexOf('/')+1));
-        $(".progress.button").attr("for","submit");
+        $('.progress.button').html('Submit: '+e.target.value.substr(e.target.value.lastIndexOf('/')+1));
+        $('.progress.button').attr("for","submit");
     });
 });
 function configureDropDownLists(ddl1,ddl2) {

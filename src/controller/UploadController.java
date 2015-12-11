@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -50,7 +53,11 @@ public class UploadController extends HttpServlet {
                 String fileName = request.getParameter("dd1")+"."+request.getParameter("dd2")+"."+request.getParameter("name")+"."+extractFileName(part);
                 filePath=savePath + File.separator + fileName;
                 System.out.println(filePath);
-                part.write(filePath);
+                File file = new File(filePath);
+
+                try (InputStream input = part.getInputStream()) {
+                    Files.copy(input, file.toPath());
+                }
             }
         }
 
@@ -65,7 +72,7 @@ public class UploadController extends HttpServlet {
         final String username = "editorialboardcrce2016@gmail.com";//change accordingly
         final String password = "fragmagcrce2016";//change accordingly
 
-        // Assuming you are sending email through relay.jangosmtp.net
+
         String host = "smtp.gmail.com";
 
         Properties props = new Properties();
@@ -95,13 +102,13 @@ public class UploadController extends HttpServlet {
                     InternetAddress.parse(to));
 
             // Set Subject: header field
-            message.setSubject("category "+request.getParameter("dd1")+" "+request.getParameter("dd2")+" "+request.getParameter("name"));
+            message.setSubject("[Article: "+request.getParameter("category")+"]");
 
             // Create the message part
             BodyPart messageBodyPart = new MimeBodyPart();
 
             // Now set the actual message
-            messageBodyPart.setText("This is message body");
+            messageBodyPart.setText("Name: "+request.getParameter("name")+"\nClass: "+request.getParameter("ddl")+"\nEmail: "+request.getParameter("email")+"\n"+new Date().toString());
 
             // Create a multipar message
             Multipart multipart = new MimeMultipart();
@@ -117,7 +124,7 @@ public class UploadController extends HttpServlet {
             messageBodyPart = new MimeBodyPart();
             DataSource source = new FileDataSource(filePath);
             messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(filePath);
+            messageBodyPart.setFileName(filePath.substring(filePath.lastIndexOf('\\')+1));
             multipart.addBodyPart(messageBodyPart);
 
             // Send the complete message parts
