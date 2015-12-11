@@ -36,6 +36,7 @@ public class UploadController extends HttpServlet {
         String appPath = request.getServletContext().getRealPath("");
         // constructs path of the directory to save uploaded file
         String savePath = appPath + SAVE_DIR;
+        String filePath = null;
 
         // creates the save directory if it does not exists
         File fileSaveDir = new File(savePath);
@@ -47,8 +48,9 @@ public class UploadController extends HttpServlet {
         for (Part part : request.getParts()) {
             if(part.getName().equals("file")) {
                 String fileName = request.getParameter("dd1")+"."+request.getParameter("dd2")+"."+request.getParameter("name")+"."+extractFileName(part);
-                System.out.println(savePath + File.separator + fileName);
-                part.write(savePath + File.separator + fileName);
+                filePath=savePath + File.separator + fileName;
+                System.out.println(filePath);
+                part.write(filePath);
             }
         }
 
@@ -70,7 +72,7 @@ public class UploadController extends HttpServlet {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", "25");
+        props.put("mail.smtp.port", "587");
 
         // Get the Session object.
         Session session = Session.getInstance(props,
@@ -107,17 +109,16 @@ public class UploadController extends HttpServlet {
             // Set text message part
             multipart.addBodyPart(messageBodyPart);
 
-            System.out.println("Adding parts");
-            for(Part parts : request.getParts()){
-                multipart.addBodyPart((BodyPart)parts);
-            }
-            /*/ Part two is attachment
+            //System.out.println("Adding parts");
+            //for(Part parts : request.getParts()){
+            //    multipart.addBodyPart((BodyPart)parts);
+            //}
+            //Part two is attachment
             messageBodyPart = new MimeBodyPart();
-            String filename = "/home/manisha/file.txt";
-            DataSource source = new FileDataSource(filename);
+            DataSource source = new FileDataSource(filePath);
             messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(filename);
-            multipart.addBodyPart(messageBodyPart);*/
+            messageBodyPart.setFileName(filePath);
+            multipart.addBodyPart(messageBodyPart);
 
             // Send the complete message parts
             message.setContent(multipart);
