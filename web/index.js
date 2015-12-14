@@ -5,11 +5,39 @@ $(function () {
     $('#uploadForm')
         .form({
             fields: {
-                name     : 'empty',
+                name: {
+                    identifier: 'name',
+                    rules: [
+                        {
+                            type   : 'empty',
+                            prompt : 'Please enter your name'
+                        }
+                    ]
+                },
+                email: {
+                    identifier: 'email',
+                    rules: [
+                        {
+                            type   : 'email',
+                            prompt : 'Please enter an email id'
+                        },
+                        {
+                            type    : 'empty',
+                            prompt  : 'Please provide your email id'
+                        }
+                    ]
+                },
+                category: {
+                    identifier: 'category',
+                    rules: [
+                        {
+                            type   : 'empty',
+                            prompt : 'Please provide a category'
+                        }
+                    ]
+                },
                 ddl      : 'empty',
                 ddl2     : 'empty',
-                category : 'empty',
-                email    : 'email',
                 file     : 'empty'
             }
         })
@@ -53,7 +81,7 @@ $(function () {
 function configureDropDownLists(ddl1,ddl2) {
     var fe = ['A', 'B', 'C', 'D'];
     var shapes = ['Computers', 'Electronics', 'Production', 'IT'];
-
+    $('ddl2').dropdown('clear');
     ddl2.options.length = 0;
     var opt = document.createElement('option');
     opt.value = "";
@@ -61,7 +89,7 @@ function configureDropDownLists(ddl1,ddl2) {
     opt.selected=true;
     opt.disabled=true;
     ddl2.options.add(opt);
-    console.log(opt)
+    console.log(opt);
     switch (ddl1.value) {
         case 'FE':
             for (i = 0; i < fe.length; i++) {

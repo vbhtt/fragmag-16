@@ -109,9 +109,10 @@
                 <option value="Marathi">Marathi</option>
             </select>
         </div>
+        <div class="ui error message"></div>
         <div class="ui inverted blue button"><label for="file" class="progress button"><i class="file icon"></i>Select File</label>
             <input type="file" id="file" name="file" style="display: none"></div>
-        <div class="field"><input id="submit" type="submit" style="display: none"></div>
+        <div class="field"><input id="submit" type="submit"><!--style="display: none"--></div>
     </form>
 </div>
 </body>
