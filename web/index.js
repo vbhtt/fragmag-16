@@ -1,48 +1,9 @@
 $(function () {
-    $('select.dropdown')
-        .dropdown()
-    ;
-    $('#uploadForm')
-        .form({
-            fields: {
-                name: {
-                    identifier: 'name',
-                    rules: [
-                        {
-                            type   : 'empty',
-                            prompt : 'Please enter your name'
-                        }
-                    ]
-                },
-                email: {
-                    identifier: 'email',
-                    rules: [
-                        {
-                            type   : 'email',
-                            prompt : 'Please enter an email id'
-                        },
-                        {
-                            type    : 'empty',
-                            prompt  : 'Please provide your email id'
-                        }
-                    ]
-                },
-                category: {
-                    identifier: 'category',
-                    rules: [
-                        {
-                            type   : 'empty',
-                            prompt : 'Please provide a category'
-                        }
-                    ]
-                },
-                ddl      : 'empty',
-                ddl2     : 'empty',
-                file     : 'empty'
-            }
-        })
-    ;
+    $('select.dropdown').dropdown();
+    $('.done,.error').hide();
+    $(".video h1").addClass('animated zoomIn');
     $("#uploadForm").submit(function (e){
+        e.stopPropagation();
         e.preventDefault();
         var fd = new FormData($(this)[0]);
         console.log("uploading!");
@@ -66,9 +27,12 @@ $(function () {
             enctype: 'multipart/form-data',
             processData: false,
             success: function(data){
-                $(".video h1").hide();
-                $(".video h1").addClass('animated zoomIn');
+                $(".done").show();
                 console.log("Success "+data);
+            },
+            error: function (error) {
+                $(".done").show();
+                console.log("Error "+error);
             }
         });
     });

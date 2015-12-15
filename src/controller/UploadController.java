@@ -132,7 +132,7 @@ public class UploadController extends HttpServlet {
 
             // Send message
             System.out.println("sending message");
-            //Transport.send(message);
+            Transport.send(message);
 
             System.out.println("Sent message successfully....");
 

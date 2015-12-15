@@ -26,7 +26,8 @@
     <meta name="msapplication-config" content="icons/browserconfig.xml">
     <meta name="theme-color" content="#1f1f2f">
     <title>FragMag 2016</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="animate.css">
 
     <script src="jquery.min.js"></script>
@@ -46,6 +47,10 @@
             color: darkslategrey;
         }
 
+        .error {
+            color: #DB2828;
+        }
+
         video, .video {
             position: absolute;
             top: 50%;
@@ -56,7 +61,7 @@
         }
 
         .video {
-            background: linear-gradient(to right, rgba(34,34,34,0) 50%, rgba(34,34,34,1) 100%) ;
+            background: linear-gradient(to right, rgba(34, 34, 34, 0) 50%, rgba(34, 34, 34, 1) 100%);
         }
 
         .formbox {
@@ -65,6 +70,10 @@
             top: 50%;
             left: 100%;
             transform: translate(-100%, -50%);
+        }
+
+        input:invalid , select:invalid {
+            background: red;
         }
     </style>
     <script src="index.js"></script>
@@ -75,18 +84,20 @@
     <source src="videos/videvostock004.mp4" type="video/mp4">
 </video>
 <div class="video">
-    <h1 style="display: none">Done!</h1>
+    <h1 class="done">Done!</h1>
+    <h1 class="error">Error!</h1>
 </div>
+
 <div class="formbox">
     <form id="uploadForm" class="ui form">
         <h2 class="ui top attatched inverted header">FragMag 2016
             <div class="sub header">Upload your articles here</div>
         </h2>
-        <div class="ui input fluid field"><input type="text" name="name" placeholder="Name"></div>
-        <div class="ui input fluid field"><input type="text" name="email" placeholder="Email"></div>
+        <div class="ui input fluid field"><input type="text" name="name" placeholder="Name" required></div>
+        <div class="ui input fluid field"><input type="email" name="email" placeholder="Email" required></div>
         <div class="field">
             <select id="ddl" class="ui search dropdown" name="dd1"
-                    onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
+                    onchange="configureDropDownLists(this,document.getElementById('ddl2'))" required>
                 <option value="">Select Year</option>
                 <option value="FE">FE</option>
                 <option value="SE">SE</option>
@@ -96,12 +107,12 @@
         </div>
         <div class="field">
             <!--If selected branch is FE then the options here should be A,B,C and D-->
-            <select id="ddl2" name="dd2" class="ui search dropdown">
+            <select id="ddl2" name="dd2" class="ui search dropdown" required>
                 <option value="">Select Division</option>
             </select>
         </div>
         <div class="field">
-            <select id="category" name="category" class="ui search dropdown">
+            <select id="category" name="category" class="ui search dropdown" required>
                 <option value="">Select Category</option>
                 <option value="English">English</option>
                 <option value="Technical">Technical</option>
@@ -109,10 +120,10 @@
                 <option value="Marathi">Marathi</option>
             </select>
         </div>
-        <div class="ui error message"></div>
-        <div class="ui inverted blue button"><label for="file" class="progress button"><i class="file icon"></i>Select File</label>
-            <input type="file" id="file" name="file" style="display: none"></div>
-        <div class="field"><input id="submit" type="submit"><!--style="display: none"--></div>
+        <div class="ui inverted blue button"><label for="file" class="progress button"><i class="file icon"></i>Select
+            File</label>
+            <input type="file" id="file" name="file" style="display: none" required></div>
+        <div class="field"><input id="submit" type="submit" style="display: none"></div>
     </form>
 </div>
 </body>
