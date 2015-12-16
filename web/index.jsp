@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-touch-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-touch-icon-72x72.png">
@@ -34,7 +34,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
     <style>
         body {
+            position: fixed;
             overflow: hidden;
+            height: 100%;
+            width: 100%;
+            transition: all 1s ease;
         }
 
         h1 {
@@ -43,7 +47,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             display: block;
-            font-size: 60vh;
+            font-size: 60vmin;
             color: darkslategrey;
         }
 
@@ -75,6 +79,19 @@
         input:invalid , select:invalid {
             background: red;
         }
+
+        @media only screen
+        and (max-device-width: 800px) {
+            h1 {
+                font-size: 30vmin;
+            }
+            .formbox {
+                max-width: 600px;
+                width: 90%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
     </style>
     <script src="index.js"></script>
 </head>
@@ -82,6 +99,7 @@
 
 <video poster="videos\001.jpg" autoplay loop>
     <source src="videos/videvostock004.mp4" type="video/mp4">
+    <source src="videos/videvostock004.webm" type="video/webm">
 </video>
 <div class="video">
     <h1 class="done">Done!</h1>

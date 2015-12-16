@@ -7,6 +7,7 @@ $(function () {
         e.preventDefault();
         var fd = new FormData($(this)[0]);
         console.log("uploading!");
+        $(".done").text('^').show();
         $.ajax({
             xhr: function()
             {
@@ -15,7 +16,8 @@ $(function () {
                 $(".formbox").addClass('animated slideOutRight');
                 xhr.upload.addEventListener("progress", function(evt){
                         var percentComplete = evt.loaded / evt.total *100;
-                        $(".video").css({"background":"linear-gradient(to right, rgba(34,34,34,0.7), rgba(34,34,34,0.7) "+percentComplete+"%,rgba(255,255,255,255))"});
+                        $(".video").css({"background":"linear-gradient(to right, rgba(34,34,34,0.7), rgba(34,34,34,0.7) "+percentComplete+"%, rgba(255,255,255,1) "+(percentComplete+3)+"%, rgba(34,34,34,0.7))"});
+                        if(percentComplete == 100)$(".done").text('>');
                 }, false);
                 return xhr;
             },
@@ -27,12 +29,13 @@ $(function () {
             enctype: 'multipart/form-data',
             processData: false,
             success: function(data){
-                $(".done").show();
+                $(".done").text('done!');
                 console.log("Success "+data);
             },
             error: function (error) {
-                $(".done").show();
-                console.log("Error "+error);
+                $(".done").hide();
+                $(".error").show();
+                console.log(error);
             }
         });
     });
