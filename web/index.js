@@ -47,6 +47,7 @@ $(function () {
 });
 function configureDropDownLists(ddl1,ddl2) {
     var fe = ['A', 'B', 'C', 'D'];
+    var deps = ['Computers', 'Electronics', 'Production', 'IT', 'Humanities & Science'];
     var shapes = ['Computers', 'Electronics', 'Production', 'IT'];
     $('ddl2').dropdown('clear');
     ddl2.options.length = 0;
@@ -65,9 +66,15 @@ function configureDropDownLists(ddl1,ddl2) {
             break;
         case 'SE':
         case 'TE':
+        case 'alumni':
         case 'BE':
             for (i = 0; i < shapes.length; i++) {
                 createOption(ddl2, shapes[i], shapes[i]);
+            }
+            break;
+        case 'staff':
+            for (i = 0; i < shapes.length; i++) {
+                createOption(ddl2, deps[i], deps[i]);
             }
             break;
         default:

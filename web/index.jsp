@@ -121,6 +121,8 @@
                 <option value="SE">SE</option>
                 <option value="TE">TE</option>
                 <option value="BE">BE</option>
+                <option value="staff">Staff</option>
+                <option value="alumni">Alumni</option>
             </select>
         </div>
         <div class="field">
